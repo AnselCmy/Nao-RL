@@ -2,6 +2,9 @@
 ### Example user template template
 ### Example user template
 
+# jupyter notebook
+*.ipynb
+
 # IntelliJ project files
 .idea
 *.iml
@@ -112,3 +115,6 @@ venv.bak/
 # mypy
 .mypy_cache/
 
+DQN.ipynb
+DQN_RIGHTARM/eval_net.pkl
+DQN_RIGHTARM/target_net.pkl

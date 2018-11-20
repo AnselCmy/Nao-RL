@@ -1,5 +1,4 @@
 import ctypes
-import math
 
 
 # declare the return type of Kinematics
@@ -9,6 +8,11 @@ class Pos(ctypes.Structure):
         ("y", ctypes.c_float),
         ("z", ctypes.c_float)
     ]
+
+
+# map angle to radian
+def ang2rad(ang):
+    return math.pi/180*ang
 
 # load c++ library as lib
 lib = ctypes.cdll.LoadLibrary('./release/base.so')
@@ -21,10 +25,10 @@ for i in range(num_angles):
 
 # declare the angles of right arm
 arm0 = 18
-angles[arm0 + 0] = math.pi
-angles[arm0 + 1] = 0
+angles[arm0 + 0] = ang2rad(20)
+angles[arm0 + 1] = ang2rad(-20)
 angles[arm0 + 2] = 0
-angles[arm0 + 3] = -math.pi / 2
+angles[arm0 + 3] = ang2rad(20)
 
 lib.Kinematics.restype = Pos
 pos = lib.Kinematics(angles)
